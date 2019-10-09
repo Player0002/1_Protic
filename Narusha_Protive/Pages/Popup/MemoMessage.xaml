@@ -1,0 +1,20 @@
+﻿<Page x:Class="Narusha_Protive.Pages.Popup.MemoMessage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Narusha_Protive.Pages.Popup"
+      mc:Ignorable="d" 
+      d:DesignHeight="50" d:DesignWidth="300"
+      Title="MemoMessage">
+
+    <Grid Background="#FFC17BF1" ClipToBounds="True">
+        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+        <Label x:Name="Message" Content=""  FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Label.Background>
+                <ImageBrush/>
+            </Label.Background>
+            </Label>
+        </ScrollViewer>
+    </Grid>
+</Page>

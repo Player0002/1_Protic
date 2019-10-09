@@ -1,0 +1,27 @@
+﻿<Page x:Class="Narusha_Protive.Pages.SubFrames.UploadedFilePages"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Narusha_Protive.Pages.SubFrames"
+      mc:Ignorable="d" 
+      d:DesignHeight="153" d:DesignWidth="260"
+      Title="UploadedFilePages">
+
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <Image Grid.Column="1" Grid.Row="1" x:Name="Img" Source="/Narusha_Protive;component/Resources/FileIcos/file.png"></Image>
+            <Label Grid.Column="1" Grid.Row="2" x:Name="FileFullName" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" FontFamily="BarunNanumGothic" Content="Can't find any file"></Label>
+        </Grid>
+    </Grid>
+</Page>

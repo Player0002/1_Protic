@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C162BC0F-E397-42A3-954A-00F872A43F62}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Narusha_Protive</RootNamespace>
+    <AssemblyName>Narusha_Protive</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>..\..\..\..\Downloads\websocket-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="CustomControls\MemoUI.xaml.cs">
+      <DependentUpon>MemoUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\NewNoticeUI.xaml.cs">
+      <DependentUpon>NewNoticeUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardPages\List_Page.xaml.cs">
+      <DependentUpon>List_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardPages\Notice_Page.xaml.cs">
+      <DependentUpon>Notice_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardPages\Share_Page.xaml.cs">
+      <DependentUpon>Share_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataManagers\DataManager.cs" />
+    <Compile Include="DataManagers\Http_Getcss.cs" />
+    <Compile Include="DataManagers\DataFormatter.cs" />
+    <Compile Include="NewNoticeDataM.cs" />
+    <Compile Include="Notice.cs" />
+    <Compile Include="Pages\Popup\MemoMessage.xaml.cs">
+      <DependentUpon>MemoMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Popup\NoticeMessage.xaml.cs">
+      <DependentUpon>NoticeMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SubFrames\DIspatcherTimer.cs" />
+    <Compile Include="Pages\SubFrames\MemoFramePage.xaml.cs">
+      <DependentUpon>MemoFramePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SubFrames\NewNoticePages.xaml.cs">
+      <DependentUpon>NewNoticePages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SubFrames\UploadedFilePages.xaml.cs">
+      <DependentUpon>UploadedFilePages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Register.xaml.cs">
+      <DependentUpon>Register.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TeamData.cs" />
+    <Compile Include="UserData.cs" />
+    <Compile Include="WebSockets\StompCommand.cs" />
+    <Compile Include="WebSockets\StompMessage.cs" />
+    <Compile Include="WebSockets\StompMessageSerializer.cs" />
+    <Page Include="CustomControls\CheckBoxControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\MemoUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\NewNoticeUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashboardPages\Home_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashboardPages\List_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashboardPages\Notice_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashboardPages\Share_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CustomControls\CheckBoxControl.xaml.cs">
+      <DependentUpon>CheckBoxControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard.xaml.cs">
+      <DependentUpon>Dashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardPages\Home_Page.xaml.cs">
+      <DependentUpon>Home_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataManagers\Http_Getcs.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DependencyObjects\LoginObjects.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Pages\LoadingScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Popup\MemoMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Popup\NoticeMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SubFrames\MemoFramePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SubFrames\NewNoticePages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SubFrames\UploadedFilePages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UserInfoClick.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Register.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Pages\LoadingScreen.xaml.cs">
+      <DependentUpon>LoadingScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserInfoClick.xaml.cs">
+      <DependentUpon>UserInfoClick.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\Icons\Untitled-1.ai" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Background_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\protic_appicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Login_page\Background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Login_page\IdBoxBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Login_page\IdBoxLabel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Login_page\LoginBaclkground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Login_page\LoginText.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Login_page\LoginYJBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Login_page\LoginYJText.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Login_page\MainLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Login_page\PwBoxBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Login_page\PwBoxLabel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Login_page\RegisterText.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\tick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Edit_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\List.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Notification.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Share.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\UserIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\protic_appicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Icons\Untitled-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Triangle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\css.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\doc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\html.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\jpg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\js.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\pdf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\png.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\psd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\ai.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\avi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\bridge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\csv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\dbf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\dwg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\exe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\fla.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\iso.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\json.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\mp3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\mp4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\ppt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\rtf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\txt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\xls.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\xml.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\zip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\docx.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FileIcos\pptx.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

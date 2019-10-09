@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="Narusha_Protive.CustomControls.CheckBoxControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Narusha_Protive.CustomControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="18" d:DesignWidth="100">
+    <Grid x:Name="GeneralGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <Image x:Name="CheckBoxx" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="pack://application:,,,/Narusha_Protive;component/Resources/Login_page/LoginYJText.png" Grid.Row="1" ForceCursor="True" Cursor="Hand"/>
+        <Viewbox Grid.Row="1" Grid.Column="1">
+            <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Malgun Gothic" Foreground="#303030" x:Name="TexttT"><InlineUIContainer>
+                    
+                </InlineUIContainer><Run Text="  로그인 상태 유지"/></TextBlock>
+        </Viewbox>
+        <Image x:Name="CheckedImg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="pack://application:,,,/Narusha_Protive;component/Resources/tick.png" Grid.Row="1" ForceCursor="True" Cursor="Hand"/>
+
+    </Grid>
+</UserControl>

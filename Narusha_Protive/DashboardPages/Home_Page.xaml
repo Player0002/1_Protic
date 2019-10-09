@@ -1,0 +1,155 @@
+﻿<Page x:Class="Narusha_Protive.DashboardPages.Home_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Narusha_Protive.DashboardPages"
+      xmlns:customcontrols="clr-namespace:Narusha_Protive.CustomControls"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1366"
+      Title="Home_Page">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Viewbox Grid.Row="0" HorizontalAlignment="Left">
+            <Label x:Name="TeamName" Content="TEAM Danny" FontFamily="NanumBarunGothic" Foreground="Black">
+                <Label.Effect>
+                    <DropShadowEffect ShadowDepth="0.6" BlurRadius="1.4" Opacity="0.48" Direction="-45" Color="#FF636363"/>
+                </Label.Effect>
+            </Label>
+        </Viewbox>
+        <Grid x:Name="InsideGrid" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="0.4*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Upload Files -->
+                <Grid x:Name="UploadFiles" ForceCursor="True" Cursor="Hand">
+                    <Canvas Background="#ffcedcf2">
+                        <Canvas.Effect>
+                            <DropShadowEffect Color="#FF6A6A6A" Direction="0" Opacity="0.5"/>
+                        </Canvas.Effect>
+                    </Canvas>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.4*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Viewbox HorizontalAlignment="Left">
+                            <Label Content="Uploaded Files"/>
+                        </Viewbox>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="8*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Frame x:Name="UploadFrame" Grid.Column="1" ></Frame>
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+                <!-- New Notice -->
+                <Grid Grid.Row="2" x:Name="NewNotice" ForceCursor="True" Cursor="Hand">
+                    <Canvas Background="#ffd8dcf7">
+                        <Canvas.Effect>
+                            <DropShadowEffect Color="#FF6A6A6A" Direction="0" Opacity="0.5"/>
+                        </Canvas.Effect>
+                    </Canvas>
+                    <Grid Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.4*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Viewbox HorizontalAlignment="Left">
+                            <Label Content="New Notice"/>
+                        </Viewbox>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="15*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Frame x:Name="NoticeFrame" Grid.Column="1"></Frame>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <!-- To Do List -->
+            <Grid x:Name="ToDoList" Grid.Row="1" Grid.Column="3"  ForceCursor="True" Cursor="Hand">
+                <Canvas Background="#e2dcf7">
+                    <Canvas.Effect>
+                        <DropShadowEffect Color="#FF6A6A6A" Direction="0" Opacity="0.5"/>
+                    </Canvas.Effect>
+                </Canvas>
+                <Grid Grid.Row="1" Grid.Column="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.15*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Viewbox HorizontalAlignment="Left">
+                        <Label Content="To Do List"/>
+                    </Viewbox>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame x:Name="ToDoListFrame" Grid.Column="1"></Frame>
+                    </Grid>
+                </Grid>
+            </Grid>
+            
+
+            <!-- Memo -->
+            <Grid x:Name="Memo"  Grid.Row="1" Grid.Column="5" ForceCursor="True" Cursor="Hand">
+                <Canvas  Background="#ffecdcf7">
+                    <Canvas.Effect>
+                        <DropShadowEffect Color="#FF6A6A6A" Direction="0" Opacity="0.5"/>
+                    </Canvas.Effect>
+                </Canvas>
+                <Grid Grid.Row="1" Grid.Column="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.15*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Viewbox HorizontalAlignment="Left">
+                        <Label Content="Memo"/>
+                    </Viewbox>
+                    <Grid Grid.Row="1" x:Name="Gridss">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Canvas x:Name="TestCanvas"  Grid.Column="1"></Canvas>
+                        <Frame x:Name="MemoFrame" Grid.Column="1"></Frame>
+                    </Grid>
+                   
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

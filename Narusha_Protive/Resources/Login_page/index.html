@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+    <style>
+        html, body{
+            height: 100%;
+        }
+        body{
+              background: url(Background.png);
+              background-size: cover;
+              background-repeat: no-repeat;
+              background-position: center;
+              background-attachment: fixed;
+        }
+        #MainLogo{
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            padding-top: 50px;
+            padding-bottom: 30px;
+            width: 30%;
+        }
+        
+        #pwBox{
+            margin-left: auto;
+            margin-right: auto;
+            background-image: url(IdBoxBackground.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 4em;
+            width: 30%;
+            display: block;
+            padding-left: 2%;
+        }
+        #idBox{
+            margin-left: auto;
+            margin-right: auto;
+            background-image: url(IdBoxBackground.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 4em;
+            width: 30%;
+            display: block;
+            padding-left: 2%;
+        }
+        #Check_Autologin{
+            transform: scale(2);
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+    <body>
+        <img id="MainLogo" src="MainLogo.png" alt="MainLogo">
+        <form>
+            <div class="TextBoxs">
+                    <input id="idBox" type="text" placeholder="     아이디를 입력해주세요"><br>
+                    <input id="pwBox" type="text" placeholder="     비밀번호를 입력해주세요">
+            </div>
+            <div class="Autologin"><input id="Check_Autologin" type="checkbox" value="안녕 칭구들"><label style="padding-left: 1%">테스트 메시지</label></div>
+        </form>
+    </body>
+</html>
