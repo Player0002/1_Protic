@@ -1,0 +1,32 @@
+﻿<Page x:Class="Narusha_Protive.Pages.SubFrames.ToDoListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Narusha_Protive.Pages.SubFrames"
+      mc:Ignorable="d" 
+      d:DesignHeight="420" d:DesignWidth="300"
+      Title="ToDoListPage">
+
+    <Grid ClipToBounds="False" x:Name="MainGrid">
+        <ScrollViewer x:Name="SCROLL"  VerticalScrollBarVisibility = "Hidden">
+            <StackPanel x:Name="Lists" Orientation="Vertical" />
+        </ScrollViewer>
+        <Grid x:Name="Load" Visibility="Visible">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="0.2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
+            <Canvas x:Name="Loading" Background="#e2dcf7" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
+            <Viewbox Grid.Row="1" Grid.Column="1">
+                <Label FontFamily="BarunNanumGothic" Content="Loading.."></Label>
+            </Viewbox>
+        </Grid>
+    </Grid>
+</Page>

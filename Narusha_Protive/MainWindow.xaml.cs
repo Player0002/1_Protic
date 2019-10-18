@@ -16,6 +16,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TeamProgramWithDatabase;
+using System.Threading;
+
 
 namespace Narusha_Protive
 {
@@ -37,8 +39,9 @@ namespace Narusha_Protive
                 UserData.email = kobj["email"].ToString();
                 UserData.password = kobj["password"].ToString();
                 UserData.memos = JsonConvert.DeserializeObject<int[]>(kobj["memo"].ToString());
-                
+                UserData.userMemos = JsonConvert.DeserializeObject<string[]>(kobj["usermemo"].ToString());
                 httpsGet.InitialzationTeam();
+
                 Dashboard board = new Dashboard();
                 board.WindowState = this.WindowState;
                 board.Show();
@@ -76,35 +79,45 @@ namespace Narusha_Protive
             try
             {
                 Http_Getcs getcs = new Http_Getcs();
-                JObject objs = getcs.Login(idBox.Text, passwordBox.Password);
-                if (objs != null && objs["name"].ToString() != "null")
+                JObject objs = objs = getcs.Login(idBox.Text, passwordBox.Password);
+                new Thread(() =>
                 {
-                    UserData.id = Convert.ToInt64(objs["id"].ToString());
-                    UserData.username = objs["name"].ToString();
-                    UserData.teamCode = objs["teamCode"].ToString();
-                    UserData.email = objs["email"].ToString();
-                    UserData.password = objs["password"].ToString();
-                    UserData.memos = JsonConvert.DeserializeObject<int[]>(objs["memo"].ToString());
-                    httpsGet.InitialzationTeam();
-                    if (IsAutoLogin.IsChekced)
+                    if (objs != null && objs["name"].ToString() != "null")
                     {
-                        JObject objs2 = httpsGet.registerAutologin(idBox.Text, UserData.password);
-                        if (objs2 == null) return;
+                        UserData.id = Convert.ToInt64(objs["id"].ToString());
+                        UserData.username = objs["name"].ToString();
+                        UserData.teamCode = objs["teamCode"].ToString();
+                        UserData.email = objs["email"].ToString();
+                        UserData.password = objs["password"].ToString();
+                        UserData.memos = JsonConvert.DeserializeObject<int[]>(objs["memo"].ToString());
+                        UserData.userMemos = JsonConvert.DeserializeObject<string[]>(objs["usermemo"].ToString());
+                        httpsGet.InitialzationTeam();
+
+                        Dispatcher.Invoke(() =>
+                        {
+                            if (IsAutoLogin.IsChekced)
+                            {
+                                JObject objs2 = httpsGet.registerAutologin(idBox.Text, UserData.password);
+                                if (objs2 == null) return;
+                            }
+
+                            Dashboard board = new Dashboard();
+                            board.WindowState = this.WindowState;
+                            board.Show();
+                            this.Close();
+                        });
                     }
-                    Dashboard board = new Dashboard();
-                    board.WindowState = this.WindowState;
-                    board.Show();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Check user account");
-                }
+                    else
+                    {
+                        MessageBox.Show("Check user account");
+                    }
+                }).Start();
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
+
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {

@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="Narusha_Protive.CustomControls.ToDoUI"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Narusha_Protive.CustomControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="80" d:DesignWidth="270">
+    <Grid x:Name="General">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.2*"/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="BackGround" Background="#FFC8BAF9">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.3*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.3*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="0.3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Row="1" Grid.Column="1" Source="/Narusha_Protive;component/Resources/Login_page/LoginYJText.png"></Image>
+                    <Image x:Name="IsCompleted" Grid.Row="1" Grid.Column="1" Source="/Narusha_Protive;component/Resources/tick.png"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.7*"/>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="Message" Content="Test TODOLIST" Grid.Row="1" FontFamily="NanumBarunGothic" FontSize="18" VerticalContentAlignment="Bottom"/>
+                    <Label x:Name="Date" Content="2019.02.12 ( hh : mm ) " Grid.Row="2" FontFamily="NanumBarunGothic" FontSize="10" VerticalContentAlignment="Top" HorizontalContentAlignment="Right"/>
+                </Grid>
+                
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

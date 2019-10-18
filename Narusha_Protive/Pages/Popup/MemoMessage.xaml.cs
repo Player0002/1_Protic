@@ -52,7 +52,7 @@ namespace Narusha_Protive.Pages.Popup
                     double currentsize = 60;
                     FormattedText text = new FormattedText(s, CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface(Message.FontFamily.ToString()), Message.FontSize, Brushes.Black); //전체길이
                     started = true;
-                    Console.WriteLine(s);
+                    
                     idx = text.Width > this.ActualWidth ? getSmallText(text) - 5 : s.Length;
                     idx2 = idx;
                     String results = "Reading...";
@@ -75,24 +75,7 @@ namespace Narusha_Protive.Pages.Popup
                     Message.Content = results;
                     
                     started = false;
-                   
-                   /* while (text.WidthIncludingTrailingWhitespace > this.ActualWidth)
-                    {
-                        int idx = getSmallText(text);
-                        if (idx == 0) break;
-                        Message.Content = (Message.Content == null ? "" : Message.Content) + s.Substring(0, idx) + "\n";
-                        s = s.Substring(idx );
-                        Console.WriteLine();
-                        Console.WriteLine("IDX : " + idx);
-                        Console.WriteLine();
-                        Console.WriteLine(s);
-                        text = new FormattedText(s, CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface(Message.FontFamily.ToString()), Message.FontSize, Brushes.Black);                        text = new FormattedText(s, CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface(Message.FontFamily.ToString()), Message.FontSize + 2, Brushes.Black);
-                        double size =text.Height; 
-                        //Console.WriteLine("CURRENT DATA : " + text.Text);
-                        this.Height += size;
-                        UserData.showd.Height += size;
-                    }
-                    if (text.WidthIncludingTrailingWhitespace <= this.ActualWidth) Message.Content = Message.Content + text.Text;*/
+
                 });
             }).Start();
         }

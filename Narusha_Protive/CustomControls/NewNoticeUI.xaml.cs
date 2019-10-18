@@ -58,14 +58,14 @@ namespace Narusha_Protive.CustomControls
 
                     if (General.ActualWidth < formattedText.WidthIncludingTrailingWhitespace) //글자가 화면을 초과함을 확인
                     {
-                        Console.WriteLine("OK CHECK  - " + originalString + " ? +" + this.ActualWidth);
+                        
                         int idx = 0;
                         while ((new FormattedText(originalString.Substring(0, idx++), CultureInfo.GetCultureInfo("en-us"), FlowDirection.LeftToRight, new Typeface(NoticeLabel.FontFamily.ToString()), NoticeLabel.FontSize + 2, Brushes.Black).WidthIncludingTrailingWhitespace < this.ActualWidth)) ; //글자 오버를 체크하기 위해 생성한 Formatted 텍스트
                         newText = originalString.Substring(0, idx > 3 ? idx - 3 : idx);
                         NoticeLabel.Content = newText + "...";
                     }
                     DateLabel.Content = DataFormatter.toDate(notice.when);
-                    Console.WriteLine("MESA " + notice.when);
+                    
                 });
             }).Start();
             
@@ -97,7 +97,7 @@ namespace Narusha_Protive.CustomControls
                         NoticeLabel.Content = newText + "...";
                     }
                     DateLabel.Content = DataFormatter.toDate(notice.when);
-                    Console.WriteLine("MESA " + notice.when);
+                    
                 });
             }).Start();*/
 

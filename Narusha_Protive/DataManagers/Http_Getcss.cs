@@ -21,7 +21,7 @@ namespace Narusha_Protive.DataManagers
                 obj.Add("notice_id", notice.id);
                 obj.Add("user_id", UserData.id);
                 string response = client.UploadString("http://localhost:8080/setNoticeRead", obj.ToString());
-                Console.WriteLine(response);
+                
                 return response.ToString().Equals("true");
             }
             return false;

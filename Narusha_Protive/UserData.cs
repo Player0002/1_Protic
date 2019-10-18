@@ -34,5 +34,7 @@ namespace Narusha_Protive
         public static Frame last = null;
         public static Frame showd = null;
         public static MemoUI clickedUI = null;
+
+        public static string[] userMemos;
     }
 }

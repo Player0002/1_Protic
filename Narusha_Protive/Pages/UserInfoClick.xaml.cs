@@ -24,29 +24,34 @@ namespace Narusha_Protive.Pages
         Http_Getcs getcs = new Http_Getcs();
         public UserInfoClick()
         {
-            InitializeComponent();
-            registerButton(Settings);
-            registerButton(Logout);
-            Logout.MouseDown += (sender, args) =>
+           InitializeComponent();
+            Loaded += (sender, args) =>
             {
-                getcs.removeAutoLogin();
-                
-                MainWindow window = new MainWindow();
-                window.WindowState = UserData.board.WindowState;
-                window.Show();
-                UserData.board.Close();
-                
+                UserName.Content = UserData.username;
+                TeamName.Content = TeamData.name;
             };
+            registerButton(Settings);
+            registerButton(Undefined);
+            registerButton(Logout);
+             Logout.MouseDown += (sender, args) =>
+             {
+                 getcs.removeAutoLogin();
+                 MainWindow window = new MainWindow();
+                 window.WindowState = UserData.board.WindowState;
+                 window.Show();
+                 UserData.board.Close();
+
+             };
         }
         private void registerButton(Grid grid)
         {
             grid.MouseEnter += (sender, args) =>
             {
-              //  ((Canvas)(grid.Children.OfType<Border>().FirstOrDefault().Child)).Background = new SolidColorBrush(Color.FromArgb(255, 220, 220, 220));
+                grid.Background = new SolidColorBrush(Color.FromArgb(255, 220, 220, 220));
             };
             grid.MouseLeave += (sender, args) =>
             {
-            //   ((Canvas)(grid.Children.OfType<Border>().FirstOrDefault().Child)).Background = new SolidColorBrush(Color.FromArgb(255, 249, 249, 249));
+                grid.Background = new SolidColorBrush(Colors.White);
             };
         }
     }

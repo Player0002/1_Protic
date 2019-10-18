@@ -44,7 +44,7 @@ namespace Narusha_Protive.DataManagers
         }
 
         //GET _ GetMemoText
-        public string GetMemoText(int id)
+        public string[] GetMemoText(int id)
         {
             var client = new WebClient();
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
@@ -54,7 +54,7 @@ namespace Narusha_Protive.DataManagers
             obj.Add("memo_id", id);
             string response = client.UploadString("http://localhost:8080/getMemoText", obj.ToString());
 
-            return response;
+            return response == null ? null : JsonConvert.DeserializeObject<string[]>(response);
         }
 
 
@@ -65,10 +65,11 @@ namespace Narusha_Protive.DataManagers
             JObject obj = getUser("teamCode");
             if(obj != null)
             {
-                Console.WriteLine(obj.ToString());
+                
                 var client = new WebClient();
                 client.Headers[HttpRequestHeader.ContentType] = "application/json";
                 client.Encoding = UTF8Encoding.UTF8;
+                
                 string response = client.UploadString("http://localhost:8080/getUserTeam", obj.ToString());
                 /*
                  * need value
@@ -77,21 +78,25 @@ namespace Narusha_Protive.DataManagers
                  * 
                  */
                 JObject data = JObject.Parse(response);
-                Console.WriteLine(data.ToString());
+                
                 TeamData.id = Convert.ToInt64(data["id"].ToString());
                 TeamData.name = data["name"].ToString();
                 TeamData.code = data["code"].ToString();
                 TeamData.files = data["files"].ToString().Equals("null") ? null : JsonConvert.DeserializeObject<string[]>(data["files"].ToString());//.Values().Select(x => x.Value<string>()).ToArray();
                 string str = getNoticeMessage();
-                Console.WriteLine("DATA -  " + str);
+                
                 TeamData.notice = str.Equals("{\"message\":\"NO NOTICES\",\"errorCode\":\"404\"}") ? null : JsonConvert.DeserializeObject<List<Notice>>(str);
+
+                string str2 = getToDoList();
+                TeamData.toDoList = str2.Equals("{\"message\":\"NO ToDoList\",\"errorCode\":\"404\"}") ? null : JsonConvert.DeserializeObject<List<ToDoList>>(str2);
+                
 
                 UserData.socket = new WebSocketSharp.WebSocket("ws://localhost:8080/my-ws/websocket");
 
                 StompMessageSerializer serializer = new StompMessageSerializer();
                 UserData.socket.OnOpen += (sender, e) =>
                 {
-                    Console.WriteLine("CONNECT");
+                    
                     var connect = new StompMessage("CONNECT");
                     connect["accept-version"] = "1.1";
                     connect["heart-beat"] = "0,1000";
@@ -102,9 +107,7 @@ namespace Narusha_Protive.DataManagers
                     sub["destination"] = "/topics/event";
                     UserData.socket.Send(serializer.Serialize(sub));
 
-                    Console.WriteLine(sub.Body + " / " + sub.Command + " / " + sub.Headers);
-                    foreach (var a in connect.Headers) Console.WriteLine(a);
-
+                    
                     var test = new StompMessage(StompFrame.SEND, "{\"name\":\"Test\"}");
                     test["content-type"] = "application/json";
                     test["destination"] = "/app/hello";
@@ -113,8 +116,8 @@ namespace Narusha_Protive.DataManagers
                 UserData.socket.OnMessage += (sender, e) =>
                 {
                     string deserialized = serializer.Deserialize(e.Data).Body;
-                    if (deserialized.Contains("Hello")) Console.WriteLine(JObject.Parse(deserialized));
-                    Console.WriteLine("Server says - > " + deserialized);
+                    if (deserialized.Contains("Hello")) 
+                    
 
                     if (deserialized.Contains("UPDATED_FILES")) // UPDATE FILES
                     {
@@ -131,52 +134,36 @@ namespace Narusha_Protive.DataManagers
                             UserData.fileUpdated = true;
                             foreach(String s in TeamData.files)
                             {
-                                Console.WriteLine("OK FIND FILES - " + s);
+                                
                             }
                         }
                     }
 
                     if (deserialized.Contains("SetNoticeRead")) // Some player reading...
                     {
-                        Console.WriteLine("\n\n\n\nDESERIALZIED");
+                        
                         var strs = getNoticeMessage();
-                        Console.WriteLine("DATA -  " + strs);
+                        
                         TeamData.notice = strs.Equals("{\"message\":\"NO NOTICES\",\"errorCode\":\"404\"}") ? null : JsonConvert.DeserializeObject<List<Notice>>(strs);
-                        Console.WriteLine("UPDATED");
-                       if(TeamData.notice != null) foreach (var i in TeamData.notice)
-                        {
-                           Console.WriteLine("TEAM : " + i.teamCode);
-                           if(i.users != null)
-                                foreach (var s in i.users)
-                                {
-                                    Console.WriteLine(s);
-                                }
-                        }
+                        
                     }
 
                     if(deserialized.Contains("AddNotices")) // Notice added
                     {
                         var strs = getNoticeMessage();
-                        Console.WriteLine("DATA -  " + strs);
+                        
                         List<Notice> result = new List<Notice>();
                         TeamData.AddNotices = strs.Equals("{\"message\":\"NO NOTICES\",\"errorCode\":\"404\"}") ? null : JsonConvert.DeserializeObject<List<Notice>>(strs);
                         
                         if(TeamData.notice != null)
                         {
                             foreach(Notice n in TeamData.notice)
-                            {
-                                
-                                Console.WriteLine("REMOVED - " + n.id);
                                 foreach (Notice n2 in TeamData.AddNotices)
-                                {
-                                    Console.WriteLine("EXISTS = " + n2.id);
                                     if (n.id == n2.id) result.Add(n2);
-                                }
-                            }
                             foreach (Notice n in result) TeamData.AddNotices.Remove(n);
                         }
 
-                        Console.WriteLine("UPDATED");
+                        
                         UserData.noticeUpdated = true;
                         TeamData.notice = strs.Equals("{\"message\":\"NO NOTICES\",\"errorCode\":\"404\"}") ? null : JsonConvert.DeserializeObject<List<Notice>>(strs);
 
@@ -185,19 +172,20 @@ namespace Narusha_Protive.DataManagers
                     if (deserialized.Contains("AddMemos")) // Memo Added
                     {
                         JObject objs = JObject.Parse(JObject.Parse(deserialized)["name"].ToString());
-                        Console.WriteLine(objs.ToString());
+                        
                         if (objs["id"].ToString().Equals(UserData.id.ToString())) // IF THIS USER
                         {
                             List<int> current = JsonConvert.DeserializeObject<List<int>>(objs["messages"].ToString());
                             UserData.memos = current.ToArray();
                             UserData.updateMemos = current.ToArray()[current.Count() - 1];
+                            UserData.userMemos = GetMemoText(UserData.memos.Length - 1);
                             UserData.memoUpdated = true;
                         }
                     }
                 };
                 UserData.socket.OnError += (sender, e) =>
                 {
-                    Console.WriteLine("Error - > " + e.Exception);
+                    
                 };
                 UserData.socket.OnClose += (sender, e) =>
                 {
@@ -217,7 +205,16 @@ namespace Narusha_Protive.DataManagers
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
             client.Encoding = UTF8Encoding.UTF8;
             string response2 = client.UploadString("http://localhost:8080/getNotices", s.ToString());
-            Console.WriteLine(s + " / " +  response2);
+            
+            return response2;
+        }
+        private string getToDoList()
+        {
+            var s = getUser("code");
+            var client = new WebClient();
+            client.Headers[HttpRequestHeader.ContentType] = "application/json";
+            client.Encoding = UTF8Encoding.UTF8;
+            string response2 = client.UploadString("http://localhost:8080/getToDoList", s.ToString());
             return response2;
         }
         //INIT - LOGIN

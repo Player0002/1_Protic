@@ -38,6 +38,16 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Drawing, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Core.1.1.0.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -45,6 +55,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -66,11 +77,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CustomControls\CircleCounter.xaml.cs">
+      <DependentUpon>CircleCounter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\DownloadUI.xaml.cs">
+      <DependentUpon>DownloadUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\MemoUI.xaml.cs">
       <DependentUpon>MemoUI.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\NewNoticeUI.xaml.cs">
       <DependentUpon>NewNoticeUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\ToDoUI.xaml.cs">
+      <DependentUpon>ToDoUI.xaml</DependentUpon>
     </Compile>
     <Compile Include="DashboardPages\List_Page.xaml.cs">
       <DependentUpon>List_Page.xaml</DependentUpon>
@@ -84,8 +104,15 @@
     <Compile Include="DataManagers\DataManager.cs" />
     <Compile Include="DataManagers\Http_Getcss.cs" />
     <Compile Include="DataManagers\DataFormatter.cs" />
+    <Compile Include="DownloadData.cs" />
     <Compile Include="NewNoticeDataM.cs" />
     <Compile Include="Notice.cs" />
+    <Compile Include="Pages\CurrentDownloadState.xaml.cs">
+      <DependentUpon>CurrentDownloadState.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Popup\download_info.xaml.cs">
+      <DependentUpon>download_info.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Popup\MemoMessage.xaml.cs">
       <DependentUpon>MemoMessage.xaml</DependentUpon>
     </Compile>
@@ -99,6 +126,9 @@
     <Compile Include="Pages\SubFrames\NewNoticePages.xaml.cs">
       <DependentUpon>NewNoticePages.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\SubFrames\ToDoListPage.xaml.cs">
+      <DependentUpon>ToDoListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\SubFrames\UploadedFilePages.xaml.cs">
       <DependentUpon>UploadedFilePages.xaml</DependentUpon>
     </Compile>
@@ -106,6 +136,7 @@
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
     <Compile Include="TeamData.cs" />
+    <Compile Include="ToDoList.cs" />
     <Compile Include="UserData.cs" />
     <Compile Include="WebSockets\StompCommand.cs" />
     <Compile Include="WebSockets\StompMessage.cs" />
@@ -114,11 +145,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CustomControls\CircleCounter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\DownloadUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomControls\MemoUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomControls\NewNoticeUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\ToDoUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -167,7 +210,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\CurrentDownloadState.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\LoadingScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Popup\download_info.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -184,6 +235,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\SubFrames\NewNoticePages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SubFrames\ToDoListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -398,6 +453,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\FileIcos\pptx.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\download.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

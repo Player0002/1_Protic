@@ -81,7 +81,7 @@ namespace TeamProgramWithDatabase
         {
             string text = TeamCodeBox.Text;
             TeamCodeVerify vir = DataManager.CheckStr(text);
-            Console.WriteLine("DATA - " + vir.ToString());
+            
             switch (vir)
             {
                 case TeamCodeVerify.None:
@@ -271,7 +271,7 @@ namespace TeamProgramWithDatabase
             }
         
             EmailVerifyCanvas.Visibility = Visibility.Visible;
-            Console.WriteLine("Email sccessfully sent");
+            
         }
         private void TImerEventSender(int i)
         {
@@ -306,20 +306,20 @@ namespace TeamProgramWithDatabase
 
             if (check)
             {
-                Console.WriteLine(1);
+                
                 timer.Stop();
 
-                Console.WriteLine(2);
+                
                 timer.timerevent -= TImerEventSender;
 
-                Console.WriteLine(3);
+                
                 timer = null;
                 
-                Console.WriteLine(4);
+                
                 TimeCount.Content = "인증이 완료되었습니다.";
                 TimeCount.Foreground = Brushes.Green;
 
-                Console.WriteLine(5);
+                
                 isCanUseEmail = true;
                 EmailButton.IsHitTestVisible = false;
                 VerfiyButton.IsHitTestVisible = false;
@@ -329,7 +329,7 @@ namespace TeamProgramWithDatabase
                 EmailCombobox.IsHitTestVisible = false;
                 VerifyBox.IsReadOnly = true;
 
-                Console.WriteLine(6);
+                
             }
             else
             {

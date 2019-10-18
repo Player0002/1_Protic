@@ -37,31 +37,23 @@ namespace Narusha_Protive.Pages.SubFrames
             {
                 Memous.Children.Clear();
                 Load.Visibility = Visibility.Visible;
-                new Task(() =>
-                {
-                    if(UserData.memos != null)
-                        for (int i = 0; i < UserData.memos.Length; i++)
-                        {
-                            Dispatcher.Invoke(() =>
-                            {
-                                MemoUI ui = new MemoUI();
-                                ui.Height = MainGrid.ActualHeight / 8;
-                                ui.MemoLabel.Content = httpget.GetMemoText(UserData.memos[i]);
-                                Memous.Children.Add(ui);
-                            });
-                        }
-                    Dispatcher.Invoke(() =>
+
+                if(UserData.memos != null)
+                    for (int i = 0; i < UserData.memos.Length; i++)
                     {
-                        Load.Visibility = Visibility.Hidden;
-                    });
-                }).Start();
+                        MemoUI ui = new MemoUI();
+                        ui.Height = MainGrid.ActualHeight / 8;
+                        ui.MemoLabel.Content = UserData.userMemos[i];
+                        Memous.Children.Add(ui);
+                    }
+                Load.Visibility = Visibility.Hidden;
             };
         }
         public void AddMemos()
         {
             MemoUI ui = new MemoUI();
             ui.Height = MainGrid.ActualHeight / 8;
-            ui.MemoLabel.Content = httpget.GetMemoText(UserData.updateMemos);
+            ui.MemoLabel.Content = UserData.userMemos[UserData.updateMemos];
             Memous.Children.Add(ui);
             UserData.updateMemos = -1;
         }

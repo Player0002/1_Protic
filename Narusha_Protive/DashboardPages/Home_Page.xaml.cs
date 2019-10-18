@@ -35,6 +35,7 @@ namespace Narusha_Protive.DashboardPages
         UploadedFilePages pages = new UploadedFilePages();
         NewNoticePages pages2 = new NewNoticePages();
         MemoFramePage pages3 = new MemoFramePage();
+        ToDoListPage pages4 = new ToDoListPage();
         public Home_Page()
         {
 
@@ -52,6 +53,9 @@ namespace Narusha_Protive.DashboardPages
             MemoFrame.Source = new Uri("Pages/SubFrames/MemoFramePage.xaml", UriKind.Relative);
             MemoFrame.NavigationService.Navigate(pages3);
 
+            ToDoListFrame.Source = new Uri("Pages/SubFrames/ToDoListPage.xaml", UriKind.Relative);
+            ToDoListFrame.NavigationService.Navigate(pages4);
+
             TeamName.Content = "TEAM " + TeamData.name;
             timer.Interval = TimeSpan.FromMilliseconds(10);
             timer.Tick += (sender, args) =>
@@ -65,7 +69,7 @@ namespace Narusha_Protive.DashboardPages
                 if (UserData.fileUpdated)
                 {
                     UserData.fileUpdated = false;
-                    Console.WriteLine("UPDATECCCCCCCCCCCCCCCCCCCccc");
+                    
                     pages = new UploadedFilePages();
                     UploadFrame.Source = new Uri("Pages/SubFrames/UploadedFilePages.xaml", UriKind.Relative);
                     UploadFrame.NavigationService.Navigate(pages);
@@ -127,7 +131,7 @@ namespace Narusha_Protive.DashboardPages
         {
             grid.MouseEnter += (sender, args) =>
             {
-                Console.WriteLine("DATA : " + ((grid == Memo ? UserData.isStop : true) || (grid == Memo ? UserData.isEnter : false)));
+                
                 if (grid == Memo ? UserData.cnt == 0 :  grid == NewNotice ? !NewNoticeDataM.IsShowed : true)
                 {
                     double amount = GetScale(grid);

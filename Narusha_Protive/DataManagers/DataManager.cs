@@ -19,8 +19,8 @@ namespace Narusha_Protive.DataManagers
             client.Encoding = UTF8Encoding.UTF8;
             string response2 = client.UploadString("http://localhost:8080/teamNameOrTeamCode", str);
             var objs = JObject.Parse(response2);
-            Console.WriteLine("NAME " + objs["name"].ToString());
-            Console.WriteLine("Code " + objs["code"].ToString());
+            
+            
             if (objs["code"].ToString().Equals("True")) return TeamCodeVerify.TeamCodeContains;
             if (objs["name"].ToString().Equals("True")) return TeamCodeVerify.TeamNameContains;
             return TeamCodeVerify.None;
@@ -109,18 +109,18 @@ namespace Narusha_Protive.DataManagers
             obj.Add("name", team);
             obj.Add("code", name);
             string response2 = client.UploadString("http://localhost:8080/addTeam", obj.ToString());
-            Console.WriteLine(response2);
+            
         }
 
         private static string GetTeamCode(string teamname)
         {
-            Console.WriteLine(teamname);
+            
             var client = new WebClient();
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
             client.Encoding = UTF8Encoding.UTF8;
             string response2 = client.UploadString("http://localhost:8080/getTeamFCode", teamname);
             var objs = JObject.Parse(response2);
-            Console.WriteLine("\n\n" + response2);
+            
             if (response2 == "{\"message\":\"Cant find team name\",\"errorCode\":\"404\"}") return null;
             return objs["code"].ToString();
         }

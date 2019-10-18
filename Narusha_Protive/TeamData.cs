@@ -14,5 +14,6 @@ namespace Narusha_Protive
         public static string name; //Team Name
         public static List<Notice> notice;
         public static List<Notice> AddNotices;
+        public static List<ToDoList> toDoList;
     }
 }

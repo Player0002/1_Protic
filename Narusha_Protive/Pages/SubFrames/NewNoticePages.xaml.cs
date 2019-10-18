@@ -27,7 +27,7 @@ namespace Narusha_Protive.Pages.SubFrames
         public NewNoticePages()
         {
             InitializeComponent();
-            Console.WriteLine("NEW NOTICEI NITIALZATION");
+            
             SCROLL.PreviewMouseWheel += (sender, obj) =>
             {
                 if (NewNoticeDataM.IsShowed) obj.Handled = true;
@@ -39,34 +39,31 @@ namespace Narusha_Protive.Pages.SubFrames
             };
             this.SizeChanged += (sender, obj) =>
             {
-                //Console.WriteLine("\n\n Data - > notice size : " + TeamData.notice.Count + " / this Size : " + this.ActualHeight + " / " + this.ActualWidth);
+                //
                 Notices.Children.Clear();
 
                 Load.Visibility = Visibility.Visible;
-                new Task(() =>
+                if (TeamData.notice != null)
                 {
-                    if (TeamData.notice != null)
+                    foreach (Notice notice in TeamData.notice)
                     {
-                        foreach (Notice notice in TeamData.notice)
+                        if (notice.users != null && notice.users.Contains(UserData.id)) continue;
                         {
-                            if (notice.users != null && notice.users.Contains(UserData.id)) continue;
-                            Dispatcher.Invoke(() =>
-                            {
-                                NewNoticeUI ui = new NewNoticeUI();
-                                ui.setNotice(notice);
-                                ui.setDelegate(this);
-                                ui.Height = MainGrid.ActualHeight / 2;
-                                ui.NoticeLabel.Content = notice.message;
-                                ui.DateLabel.Content = DataFormatter.toDate(notice.when);
-                                Notices.Children.Add(ui);
-                                Console.WriteLine("INDEX");
-                            });
+                            NewNoticeUI ui = new NewNoticeUI();
+                            ui.setNotice(notice);
+                            ui.setDelegate(this);
+                            ui.Height = MainGrid.ActualHeight / 2;
+                            ui.NoticeLabel.Content = notice.message;
+                            ui.DateLabel.Content = DataFormatter.toDate(notice.when);
+                            Notices.Children.Add(ui);
+                            
                         }
-                        Console.WriteLine("COMPLETE");
-
-                        Dispatcher.Invoke(() => { Load.Visibility = Visibility.Hidden; });
                     }
-                }).Start();
+                    
+
+                }
+                Load.Visibility = Visibility.Hidden;
+
             };
 
         }
@@ -74,7 +71,7 @@ namespace Narusha_Protive.Pages.SubFrames
         {
             foreach(Notice n in TeamData.AddNotices)
             {
-                Console.WriteLine("\n\n " + n.id);
+                
 
                 Dispatcher.Invoke(() =>
                 {

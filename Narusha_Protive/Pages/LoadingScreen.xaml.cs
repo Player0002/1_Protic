@@ -40,7 +40,7 @@ namespace Narusha_Protive.Pages
                 {
                     Dispatcher.Invoke(() => { Label.Content = Label.Content + s.ToString(); });
                     System.Threading.Thread.Sleep(50);
-                    Console.WriteLine(s);
+                    
                 }
                 
             }).Start();
