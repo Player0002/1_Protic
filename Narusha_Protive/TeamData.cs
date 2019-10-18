@@ -15,5 +15,6 @@ namespace Narusha_Protive
         public static List<Notice> notice;
         public static List<Notice> AddNotices;
         public static List<ToDoList> toDoList;
+        public static bool Updated = false;
     }
 }

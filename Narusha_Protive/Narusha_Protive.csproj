@@ -89,6 +89,9 @@
     <Compile Include="CustomControls\NewNoticeUI.xaml.cs">
       <DependentUpon>NewNoticeUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\SharePageController.xaml.cs">
+      <DependentUpon>SharePageController.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\ShareUI.xaml.cs">
       <DependentUpon>ShareUI.xaml</DependentUpon>
     </Compile>
@@ -161,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomControls\NewNoticeUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\SharePageController.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -463,6 +470,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\download.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Share_icons\next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Share_icons\nextCant.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Share_icons\undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Share_icons\undoCant.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

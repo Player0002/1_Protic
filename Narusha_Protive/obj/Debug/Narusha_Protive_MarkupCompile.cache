@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\KYJ\source\repos\Narusha_Protive\Narusha_Protive\App.xaml
-24-214861031
+25454121379
 
-43449376196
+44-1487374555
 22-266693627
-CustomControls\CheckBoxControl.xaml;CustomControls\CircleCounter.xaml;CustomControls\DownloadUI.xaml;CustomControls\MemoUI.xaml;CustomControls\NewNoticeUI.xaml;CustomControls\ShareUI.xaml;CustomControls\ToDoUI.xaml;Dashboard.xaml;DashboardPages\Home_Page.xaml;DashboardPages\List_Page.xaml;DashboardPages\Notice_Page.xaml;DashboardPages\Share_Page.xaml;MainWindow.xaml;Pages\CurrentDownloadState.xaml;Pages\LoadingScreen.xaml;Pages\Popup\download_info.xaml;Pages\Popup\MemoMessage.xaml;Pages\Popup\NoticeMessage.xaml;Pages\SubFrames\MemoFramePage.xaml;Pages\SubFrames\NewNoticePages.xaml;Pages\SubFrames\ToDoListPage.xaml;Pages\SubFrames\UploadedFilePages.xaml;Pages\UserInfoClick.xaml;Register.xaml;
+CustomControls\CheckBoxControl.xaml;CustomControls\CircleCounter.xaml;CustomControls\DownloadUI.xaml;CustomControls\MemoUI.xaml;CustomControls\NewNoticeUI.xaml;CustomControls\SharePageController.xaml;CustomControls\ShareUI.xaml;CustomControls\ToDoUI.xaml;Dashboard.xaml;DashboardPages\Home_Page.xaml;DashboardPages\List_Page.xaml;DashboardPages\Notice_Page.xaml;DashboardPages\Share_Page.xaml;MainWindow.xaml;Pages\CurrentDownloadState.xaml;Pages\LoadingScreen.xaml;Pages\Popup\download_info.xaml;Pages\Popup\MemoMessage.xaml;Pages\Popup\NoticeMessage.xaml;Pages\SubFrames\MemoFramePage.xaml;Pages\SubFrames\NewNoticePages.xaml;Pages\SubFrames\ToDoListPage.xaml;Pages\SubFrames\UploadedFilePages.xaml;Pages\UserInfoClick.xaml;Register.xaml;
 
 False
 

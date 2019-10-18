@@ -82,3 +82,5 @@ C:\Users\KYJ\source\repos\Narusha_Protive\Narusha_Protive\obj\Debug\CustomContro
 C:\Users\KYJ\source\repos\Narusha_Protive\Narusha_Protive\obj\Debug\CustomControls\DownloadUI.baml
 C:\Users\KYJ\source\repos\Narusha_Protive\Narusha_Protive\obj\Debug\CustomControls\ShareUI.g.cs
 C:\Users\KYJ\source\repos\Narusha_Protive\Narusha_Protive\obj\Debug\CustomControls\ShareUI.baml
+C:\Users\KYJ\source\repos\Narusha_Protive\Narusha_Protive\obj\Debug\CustomControls\SharePageController.g.cs
+C:\Users\KYJ\source\repos\Narusha_Protive\Narusha_Protive\obj\Debug\CustomControls\SharePageController.baml

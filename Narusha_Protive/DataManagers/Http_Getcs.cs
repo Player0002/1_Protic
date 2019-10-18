@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Narusha_Protive.DashboardPages;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -116,7 +117,7 @@ namespace Narusha_Protive.DataManagers
                 UserData.socket.OnMessage += (sender, e) =>
                 {
                     string deserialized = serializer.Deserialize(e.Data).Body;
-                    if (deserialized.Contains("Hello")) 
+                    if (deserialized.Contains("Hello")) Console.WriteLine("Hello~");
                     
 
                     if (deserialized.Contains("UPDATED_FILES")) // UPDATE FILES
@@ -129,13 +130,10 @@ namespace Narusha_Protive.DataManagers
                             response = client.UploadString("http://danny-dataserver.kro.kr:8080/getUserTeam", obj.ToString());
 
                             data = JObject.Parse(response);
-
+                            Console.WriteLine("Received");
                             TeamData.files = data["files"].ToString().Equals("null") ? null : JsonConvert.DeserializeObject<string[]>(data["files"].ToString());//.Values().Select(x => x.Value<string>()).ToArray()
                             UserData.fileUpdated = true;
-                            foreach(String s in TeamData.files)
-                            {
-                                
-                            }
+                            TeamData.Updated = true;
                         }
                     }
 
