@@ -77,7 +77,6 @@ namespace Narusha_Protive
                     registerButton(Menu_4);
                     registerUser(UserInfo);
                 });
-                System.Threading.Thread.Sleep(3000);
 
                 isLoading = false;
             }).Start();

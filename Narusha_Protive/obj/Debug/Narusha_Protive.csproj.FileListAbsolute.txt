@@ -26,7 +26,6 @@ C:\Users\KYJ\source\repos\Narusha_Protive\Narusha_Protive\obj\Debug\Pages\UserIn
 C:\Users\KYJ\source\repos\Narusha_Protive\Narusha_Protive\obj\Debug\Narusha_Protive.g.resources
 C:\Users\KYJ\source\repos\Narusha_Protive\Narusha_Protive\obj\Debug\Narusha_Protive.Properties.Resources.resources
 C:\Users\KYJ\source\repos\Narusha_Protive\Narusha_Protive\obj\Debug\Narusha_Protive.csproj.GenerateResource.cache
-C:\Users\KYJ\source\repos\Narusha_Protive\Narusha_Protive\obj\Debug\Narusha_Protive.csproj.CoreCompileInputs.cache
 C:\Users\KYJ\source\repos\Narusha_Protive\Narusha_Protive\obj\Debug\Narusha_Protive.csproj.CopyComplete
 C:\Users\KYJ\source\repos\Narusha_Protive\Narusha_Protive\obj\Debug\Narusha_Protive.exe
 C:\Users\KYJ\source\repos\Narusha_Protive\Narusha_Protive\obj\Debug\Narusha_Protive.pdb
