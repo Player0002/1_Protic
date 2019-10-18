@@ -17,7 +17,7 @@ namespace Narusha_Protive.DataManagers
             var client = new WebClient();
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
             client.Encoding = UTF8Encoding.UTF8;
-            string response2 = client.UploadString("http://localhost:8080/teamNameOrTeamCode", str);
+            string response2 = client.UploadString("http://danny-dataserver.kro.kr:8080/teamNameOrTeamCode", str);
             var objs = JObject.Parse(response2);
             
             
@@ -32,7 +32,7 @@ namespace Narusha_Protive.DataManagers
             var client = new WebClient();
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
             client.Encoding = UTF8Encoding.UTF8;
-            string response2 = client.UploadString("http://localhost:8080/getTeamFCode", code);
+            string response2 = client.UploadString("http://danny-dataserver.kro.kr:8080/getTeamFCode", code);
             var objs = JObject.Parse(response2);            if (response2 == "{\"message\":\"NO NOTICES\",\"errorCode\":\"404\"}") return null;
             else return objs["name"].ToString();
 
@@ -43,7 +43,7 @@ namespace Narusha_Protive.DataManagers
             var client = new WebClient();
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
             client.Encoding = UTF8Encoding.UTF8;
-            string response2 = client.UploadString("http://localhost:8080/getCanUseThisEmail", email);
+            string response2 = client.UploadString("http://danny-dataserver.kro.kr:8080/getCanUseThisEmail", email);
             return response2.ToString().Equals("false");
         }
 
@@ -53,7 +53,7 @@ namespace Narusha_Protive.DataManagers
 
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
             client.Encoding = UTF8Encoding.UTF8;
-            string rse = client.UploadString("http://localhost:8080/getUser", text);
+            string rse = client.UploadString("http://danny-dataserver.kro.kr:8080/getUser", text);
             return rse.ToString().Equals("{\"message\":\"Can't find user name\",\"errorCode\":\"404\"}");
         }
 
@@ -63,7 +63,7 @@ namespace Narusha_Protive.DataManagers
 
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
             client.Encoding = UTF8Encoding.UTF8;
-            string rse = client.UploadString("http://localhost:8080/endVerifity", email);
+            string rse = client.UploadString("http://danny-dataserver.kro.kr:8080/endVerifity", email);
             if (rse.ToString().Equals("false")) MessageBox.Show("ERROR");
         }
 
@@ -78,7 +78,7 @@ namespace Narusha_Protive.DataManagers
             obj.Add("email", email);
             obj.Add("code", code);
 
-            string res = client.UploadString("http://localhost:8080/checkverify", obj.ToString());
+            string res = client.UploadString("http://danny-dataserver.kro.kr:8080/checkverify", obj.ToString());
 
             return res.ToString().Equals("true");
         }
@@ -97,7 +97,7 @@ namespace Narusha_Protive.DataManagers
             obj.Add("email", id);
             obj.Add("password", DataFormatter.Encrypt512(password));
             obj.Add("teamCode", teamCodeVerify == TeamCodeVerify.TeamCodeContains ? team : GetTeamCode(team));
-            client.UploadString("http://localhost:8080/addUser", obj.ToString());
+            client.UploadString("http://danny-dataserver.kro.kr:8080/addUser", obj.ToString());
         }
 
         private static void MakeNewTeam(string team, string name)
@@ -108,7 +108,7 @@ namespace Narusha_Protive.DataManagers
             JObject obj = new JObject();
             obj.Add("name", team);
             obj.Add("code", name);
-            string response2 = client.UploadString("http://localhost:8080/addTeam", obj.ToString());
+            string response2 = client.UploadString("http://danny-dataserver.kro.kr:8080/addTeam", obj.ToString());
             
         }
 
@@ -118,7 +118,7 @@ namespace Narusha_Protive.DataManagers
             var client = new WebClient();
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
             client.Encoding = UTF8Encoding.UTF8;
-            string response2 = client.UploadString("http://localhost:8080/getTeamFCode", teamname);
+            string response2 = client.UploadString("http://danny-dataserver.kro.kr:8080/getTeamFCode", teamname);
             var objs = JObject.Parse(response2);
             
             if (response2 == "{\"message\":\"Cant find team name\",\"errorCode\":\"404\"}") return null;
@@ -129,7 +129,7 @@ namespace Narusha_Protive.DataManagers
             var client = new WebClient();
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
             client.Encoding = UTF8Encoding.UTF8;
-            string response2 = client.UploadString("http://localhost:8080/makeNewVerify", email);
+            string response2 = client.UploadString("http://danny-dataserver.kro.kr:8080/makeNewVerify", email);
             return response2;
         }
     }

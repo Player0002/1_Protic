@@ -94,7 +94,7 @@ namespace Narusha_Protive.Pages.SubFrames
                             }).Start();
                         }
                     };
-                    client.DownloadDataAsync(new Uri("http://localhost:8080/getFileTest?Name=" + TeamData.name + "&Index=0"));
+                    client.DownloadDataAsync(new Uri("http://danny-dataserver.kro.kr:8080/getFileTest?Name=" + TeamData.name + "&Index=0"));
                     datas.addProgress();
                 }
             };

@@ -52,7 +52,7 @@ namespace Narusha_Protive.DataManagers
             var obj = new JObject();
             obj.Add("user_id", UserData.id);
             obj.Add("memo_id", id);
-            string response = client.UploadString("http://localhost:8080/getMemoText", obj.ToString());
+            string response = client.UploadString("http://danny-dataserver.kro.kr:8080/getMemoText", obj.ToString());
 
             return response == null ? null : JsonConvert.DeserializeObject<string[]>(response);
         }
@@ -70,7 +70,7 @@ namespace Narusha_Protive.DataManagers
                 client.Headers[HttpRequestHeader.ContentType] = "application/json";
                 client.Encoding = UTF8Encoding.UTF8;
                 
-                string response = client.UploadString("http://localhost:8080/getUserTeam", obj.ToString());
+                string response = client.UploadString("http://danny-dataserver.kro.kr:8080/getUserTeam", obj.ToString());
                 /*
                  * need value
                  * 
@@ -91,7 +91,7 @@ namespace Narusha_Protive.DataManagers
                 TeamData.toDoList = str2.Equals("{\"message\":\"NO ToDoList\",\"errorCode\":\"404\"}") ? null : JsonConvert.DeserializeObject<List<ToDoList>>(str2);
                 
 
-                UserData.socket = new WebSocketSharp.WebSocket("ws://localhost:8080/my-ws/websocket");
+                UserData.socket = new WebSocketSharp.WebSocket("ws://danny-dataserver.kro.kr:8080/my-ws/websocket");
 
                 StompMessageSerializer serializer = new StompMessageSerializer();
                 UserData.socket.OnOpen += (sender, e) =>
@@ -126,7 +126,7 @@ namespace Narusha_Protive.DataManagers
                             client = new WebClient();
                             client.Headers[HttpRequestHeader.ContentType] = "application/json";
                             client.Encoding = UTF8Encoding.UTF8;
-                            response = client.UploadString("http://localhost:8080/getUserTeam", obj.ToString());
+                            response = client.UploadString("http://danny-dataserver.kro.kr:8080/getUserTeam", obj.ToString());
 
                             data = JObject.Parse(response);
 
@@ -204,7 +204,7 @@ namespace Narusha_Protive.DataManagers
             var client = new WebClient();
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
             client.Encoding = UTF8Encoding.UTF8;
-            string response2 = client.UploadString("http://localhost:8080/getNotices", s.ToString());
+            string response2 = client.UploadString("http://danny-dataserver.kro.kr:8080/getNotices", s.ToString());
             
             return response2;
         }
@@ -214,7 +214,7 @@ namespace Narusha_Protive.DataManagers
             var client = new WebClient();
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
             client.Encoding = UTF8Encoding.UTF8;
-            string response2 = client.UploadString("http://localhost:8080/getToDoList", s.ToString());
+            string response2 = client.UploadString("http://danny-dataserver.kro.kr:8080/getToDoList", s.ToString());
             return response2;
         }
         //INIT - LOGIN
@@ -225,7 +225,7 @@ namespace Narusha_Protive.DataManagers
             WebClient client = new WebClient();
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
             client.Encoding = UTF8Encoding.UTF8;
-            string response = client.UploadString("http://localhost:8080/loginUser", request);
+            string response = client.UploadString("http://danny-dataserver.kro.kr:8080/loginUser", request);
             JObject objs = JObject.Parse(response);
             return objs;
         } 
@@ -237,7 +237,7 @@ namespace Narusha_Protive.DataManagers
             WebClient client = new WebClient();
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
             client.Encoding = UTF8Encoding.UTF8;
-            string response = client.UploadString("http://localhost:8080/isUserAutoLogin", json.ToString());
+            string response = client.UploadString("http://danny-dataserver.kro.kr:8080/isUserAutoLogin", json.ToString());
             return JObject.Parse(response);
 
         }
@@ -251,7 +251,7 @@ namespace Narusha_Protive.DataManagers
             WebClient client = new WebClient();
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
             client.Encoding = UTF8Encoding.UTF8;
-            string response = client.UploadString("http://localhost:8080/registerAutologin", json.ToString());
+            string response = client.UploadString("http://danny-dataserver.kro.kr:8080/registerAutologin", json.ToString());
             return JObject.Parse(response);
         }
         //POST - RemoveAutoLogin
@@ -264,7 +264,7 @@ namespace Narusha_Protive.DataManagers
             WebClient client = new WebClient();
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
             client.Encoding = UTF8Encoding.UTF8;
-            string response = client.UploadString("http://localhost:8080/removeUserAutoLogin", json.ToString());
+            string response = client.UploadString("http://danny-dataserver.kro.kr:8080/removeUserAutoLogin", json.ToString());
             return response.Equals("true");
         }
         //GET - MainBoard Serial Key

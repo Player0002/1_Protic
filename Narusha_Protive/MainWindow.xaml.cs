@@ -72,7 +72,6 @@ namespace Narusha_Protive
             LoginButton.PreviewMouseDown += (sender, obj) => {
                 login();
             };
-            
         }
         private void login()
         {
