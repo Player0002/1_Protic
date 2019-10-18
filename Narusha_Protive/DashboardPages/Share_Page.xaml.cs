@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Narusha_Protive.CustomControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,12 @@ namespace Narusha_Protive.DashboardPages
     /// </summary>
     public partial class Share_Page : Page
     {
+        public static Share_Page instance = null;
+        public static Share_Page getInstance()
+        {
+            if (instance == null) instance = new Share_Page();
+            return instance;
+        }
         public Share_Page()
         {
             InitializeComponent();
@@ -75,39 +82,35 @@ namespace Narusha_Protive.DashboardPages
                     VisiableGrid.ColumnDefinitions.Add(col3);
                 }
                 /* Setter */
+                Random rnd = new Random();
                 for (int i = 0; i < hcnt; i++)
                 {
                     rcurrent += 3;
 
+                    var identitys = DownloadData.getInstance().accessFiles;
                     for (int j = 0; j < cnt; j++)
                     {
+                        var str = identitys.ToArray()[rnd.Next(identitys.Count())];
                         current += 3;
-                        Canvas c = new Canvas();
-                        c.Width = 236;
-                        c.Height = 150;
-                        Canvas c2 = new Canvas();
-                        c2.Width = 30.25 / 2;
-                        c2.Height = 150;
-                        Canvas c3 = new Canvas();
-                        c3.Width = 30.25 / 2;
-                        c3.Height = 150;
-                        c.Background = new SolidColorBrush(Colors.Beige);
-                        c2.Background = new SolidColorBrush(Colors.Red);
-                        c3.Background = new SolidColorBrush(Colors.Black);
-                        Grid.SetColumn(c, current + 1);
-                        Grid.SetColumn(c2, current + 2);
-                        Grid.SetColumn(c3, current);
-                        Grid.SetRow(c, rcurrent + 1);
-                        Grid.SetRow(c3, rcurrent + 1);
-                        Grid.SetRow(c2, rcurrent + 1);
-                        VisiableGrid.Children.Add(c);
-                        VisiableGrid.Children.Add(c2);
-                        VisiableGrid.Children.Add(c3);
+                        ShareUI ui = new ShareUI();
+                        ui.Width = 236;
+                        ui.Height = 150;
+                        ui.setName("TestFileName." + str);
+                        Grid.SetColumn(ui, current + 1);
+                        Grid.SetRow(ui, rcurrent + 1);
+                        VisiableGrid.Children.Add(ui);
                     }
                     current = another > 0 ? -2 : -3;
                 }
                 VisiableGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(100) });                    
             };
+
         }
     }
 }
+
+//Grid.SetColumn(c2, current + 2);
+//Grid.SetColumn(c3, current);
+
+//Grid.SetRow(c3, rcurrent + 1);
+//Grid.SetRow(c2, rcurrent + 1);

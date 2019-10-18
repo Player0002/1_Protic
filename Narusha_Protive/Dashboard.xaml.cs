@@ -1,4 +1,5 @@
 ﻿using Narusha_Protive.CustomControls;
+using Narusha_Protive.DashboardPages;
 using Narusha_Protive.Pages;
 using Narusha_Protive.Pages.Popup;
 using System;
@@ -250,7 +251,10 @@ namespace Narusha_Protive
                 selectedGrid = grid;
                 selectedGrid.Children.OfType<Image>().FirstOrDefault().Visibility = Visibility.Visible;
 
-                CurrentSource.Source = GetPage();
+                Uri uri = GetPage();
+                CurrentSource.Source = uri;
+                if (grid == Menu_2) CurrentSource.Navigate(Share_Page.getInstance());
+                else CurrentSource.NavigationService.Navigate(uri);
             };
 
         }

@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="Narusha_Protive.CustomControls.ShareUI"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Narusha_Protive.CustomControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="236">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Image x:Name="FileIcon" Source="/Narusha_Protive;component/Resources/FileIcos/psd.png" Width="100" Height="100"/>
+        <Label x:Name="FileName" Grid.Row="1" Content="기타파일테스트궯둟.psd" HorizontalAlignment="Center" FontFamily="NanumBarunGothic" VerticalContentAlignment="Top" FontSize="16"/>
+    </Grid>
+</UserControl>

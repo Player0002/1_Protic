@@ -89,6 +89,9 @@
     <Compile Include="CustomControls\NewNoticeUI.xaml.cs">
       <DependentUpon>NewNoticeUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\ShareUI.xaml.cs">
+      <DependentUpon>ShareUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\ToDoUI.xaml.cs">
       <DependentUpon>ToDoUI.xaml</DependentUpon>
     </Compile>
@@ -158,6 +161,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomControls\NewNoticeUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\ShareUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
