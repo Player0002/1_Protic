@@ -120,15 +120,12 @@ namespace Narusha_Protive.DashboardPages
                 VisiableGrid.ColumnDefinitions.Add(col3);
             }
             /* Setter */
-            Random rnd = new Random();
 
             for (int i = 0; i < ((shouldShowDatas - (cnt * hcnt * page)) / cnt +1 > hcnt ? hcnt : (shouldShowDatas - (cnt * hcnt * page)) / cnt + 1); i++)
             {
                 rcurrent += 3;
-                var identitys = DownloadData.getInstance().accessFiles;
                 for (int j = 0; j < ((shouldShowDatas - (cnt * hcnt * page)) - (cnt * i) > cnt ? cnt : (shouldShowDatas - (cnt * hcnt * page)) - (cnt * i)); j++)
                 {
-                    var str = identitys.ToArray()[rnd.Next(identitys.Count())];
                     current += 3;
                     ShareUI ui = new ShareUI();
                     ui.Width = 236;
