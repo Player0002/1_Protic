@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Narusha_Protive.DataManagers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,14 +21,23 @@ namespace Narusha_Protive.CustomControls
     /// </summary>
     public partial class ShareUI : UserControl
     {
+        int index;
         public ShareUI()
         {
             InitializeComponent();
+            PreviewMouseDown += (sender, args) =>
+            {
+                new Http_Getcs().downloadFile(index, this.Dispatcher);
+            };
         }
         public void setName(string FIleFullName)
         {
             FileName.Content = FIleFullName;
             imageUpdate();
+        }
+        public void setIndex(int idx)
+        {
+            index = idx;
         }
         private void imageUpdate()
         {

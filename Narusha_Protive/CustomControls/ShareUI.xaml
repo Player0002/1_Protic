@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Narusha_Protive.CustomControls"
              mc:Ignorable="d" 
              d:DesignHeight="150" d:DesignWidth="236">
-    <Grid>
+    <Grid ForceCursor="True" Cursor="Hand">
         <Grid.RowDefinitions>
             <RowDefinition Height="120"/>
             <RowDefinition Height="30"/>

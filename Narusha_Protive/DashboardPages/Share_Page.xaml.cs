@@ -131,6 +131,7 @@ namespace Narusha_Protive.DashboardPages
                     ui.Width = 236;
                     ui.Height = 150;
                     ui.setName(TeamData.files[count++]);
+                    ui.setIndex(count-1);
                     Grid.SetColumn(ui, current + 1);
                     Grid.SetRow(ui, rcurrent + 1);
                     VisiableGrid.Children.Add(ui);
